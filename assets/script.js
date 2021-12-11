@@ -43,8 +43,7 @@ startButtonEl.addEventListener("click", function () {
         timerEl.textContent = "Time Remaining: " + timeLeft;
 
         if (timeLeft === 0) {
-            clearInterval(clockTick);
-            alert("Your time is up!")
+            quizOver ();
         }
         timeLeft--;
     } 
