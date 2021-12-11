@@ -4,34 +4,35 @@ let timerEl = document.querySelector(".timer")
 let timeLeft = 75
 let clockTick;
 let quizBox = document.querySelector(".options")
+let score = 0
+let highScoresEl = document.querySelector(".high-scores")
 
 let questions = [
     {
-        questionOne: "question here",
-        options: ["option1", "correct", "option3", "option4"],
-        correct: "correct"
+        questionOne: "Where should you link your Javascript file in your HTML?",
+        options: ["In the head", "Bottom of the body", "Outside the <html> tags", "In the title"],
+        correct: "Bottom of the body"
     },
     {
-        questionTwo: "2nd question here",
-        options: ["option1", "option2", "correct", "option4"],
-        correct: "correct"
+        questionTwo: "What is the correct tag for an external Javascript file?",
+        options: ["section", "style", "script", "link"],
+        correct: "script"
     },
     {
-        questionThree: "3rd question here",
-        options: ["correct", "option2", "option3", "option4"],
-        correct: "correct"
+        questionThree: "How would you call a function called 'thisFunction'",
+        options: ["thisFunction ()", "call thisFunction", "call thisFunction ()", "function = thisFunction"],
+        correct: "thisFunction ()"
     },
     {
-        questionFour: "4th question here",
-        options: ["option1", "option2", "option3", "correct"],
-        correct: "correct"
+        questionFour: "How do you add a comment in Javascript?",
+        options: ["<!--comment-->", "/*comment/", "//comment", "(comment)"],
+        correct: "//comment"
     },
     {
-        questionFive: "5th question here",
-        options: ["option1", "correct", "option3", "option4"],
-        correct: "correct"
+        questionFive: "What operator do you use to assign value to a variable?",
+        options: ["x", "=", "-", "*"],
+        correct: "="
     }
-
 ]
 
 // What to do when start quiz button is clicked
@@ -61,6 +62,7 @@ function firstQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[0].correct) {
                 console.log("correct button clicked")
+                score = score + 5
                 secondQuestion ();
             }
             else {
@@ -82,6 +84,7 @@ function secondQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[1].correct) {
                 console.log("correct button clicked")
+                score = score + 5
                 thirdQuestion ();
             }
             else {
@@ -103,6 +106,7 @@ function thirdQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[2].correct) {
                 console.log("correct button clicked")
+                score = score + 5
                 fourthQuestion ();
             }
             else {
@@ -124,7 +128,8 @@ function fourthQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[3].correct) {
                 console.log("correct button clicked")
-                fifthQuestion ();
+                score = score + 5
+                fifthQuestion ();               
             }
             else {
                 console.log("wrong clicked")
@@ -145,6 +150,7 @@ function fifthQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[4].correct) {
                 console.log("correct button clicked")
+                score = score + 5
                 quizOver ();
             }
             else {
@@ -158,7 +164,7 @@ function fifthQuestion () {
 }
 
 function quizOver () {
-    document.querySelector(".options").remove ();
+    quizBox.textContent = "Your final score is: " + score;
     console.log ("The quiz is over");
     clearInterval(clockTick);
     timerEl.textContent = "Quiz Over!"    
@@ -166,13 +172,8 @@ function quizOver () {
 }
 
 
-
-
-
-// Intro page with Welcome to quiz and information, start button.
-
 // Link to view high scores in top left and timer countdown with left in top right (starts with 75 seconds) (setInterval once start is clicked)
-// Once start button is click, move into fist quiz box with questions and answers
+
 // One questions must be marked with an if statement (if true: add to score, say "correct" at buttom, no time penalty)
 // Else rest of the options, no add to score, 10 second penalty
 // Make sure no other questions can be selected after answer is already selected and graded
