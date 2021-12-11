@@ -7,20 +7,37 @@ let clockTick;
 // What to do when start quiz button is clicked
 startButtonEl.addEventListener("click", function () {
     console.log("button clicked")
+    document.getElementById('welcome-box').remove();
     // When start button is clicked, the startTimer function is called and timer appears and begins countdown
     function startTimer () {
         timerEl.textContent = "Time Remaining: " + timeLeft;
-        timeLeft--;
 
         if (timeLeft === 0) {
             clearInterval(clockTick);
             alert("Your time is up!")
         }
+        timeLeft--;
     } 
     clockTick = setInterval (startTimer, 1000);
-
     startTimer ();
-})
+    firstQuestion ();
+});
+
+function firstQuestion () {
+    let quizQuestion = document.querySelector("#quiz-container");
+    quizQuestion.textContent = "This is a question about javascript?";
+    let quizOptions = document.querySelector(".quiz-options")
+    let optionOne = document.createElement("button");
+    let optionTwo = document.createElement("button");
+    let optionThree = document.createElement("button");
+    let optionFour = document.createElement("button");
+    optionOne.textContent = "First option";
+    optionTwo.textContent = "Second option";
+    optionThree.textContent = "Third option";
+    optionFour.textContent = "Fourth option";
+    quizOptions.appendChild(optionOne);
+
+}
 
 
 // Hide start button and quiz info and go into first quiz box
