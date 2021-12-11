@@ -1,8 +1,38 @@
 // Get all required elements from HTML (buttons and boxes etc)
 let startButtonEl = document.querySelector("#start-button");
 let timerEl = document.querySelector(".timer")
-let timeLeft = 10
+let timeLeft = 75
 let clockTick;
+let quizBox = document.querySelector(".options")
+
+let questions = [
+    {
+        questionOne: "question here",
+        options: ["option1", "correct", "option3", "option4"],
+        correct: "correct"
+    },
+    {
+        questionTwo: "2nd question here",
+        options: ["option1", "option2", "correct", "option4"],
+        correct: "correct"
+    },
+    {
+        questionThree: "3rd question here",
+        options: ["correct", "option2", "option3", "option4"],
+        correct: "correct"
+    },
+    {
+        questionFour: "4th question here",
+        options: ["option1", "option2", "option3", "correct"],
+        correct: "correct"
+    },
+    {
+        questionFive: "5th question here",
+        options: ["option1", "correct", "option3", "option4"],
+        correct: "correct"
+    }
+
+]
 
 // What to do when start quiz button is clicked
 startButtonEl.addEventListener("click", function () {
@@ -24,36 +54,124 @@ startButtonEl.addEventListener("click", function () {
 });
 
 function firstQuestion () {
-    let quizQuestion = document.querySelector("#quiz-container");
-    quizQuestion.textContent = "This is a question about javascript?";
-    let quizOptions = document.querySelector(".quiz-options")
-    let optionOne = document.createElement("button");
-    let optionTwo = document.createElement("button");
-    let optionThree = document.createElement("button");
-    let optionFour = document.createElement("button");
-    optionOne.textContent = "First option";
-    optionTwo.textContent = "Second option";
-    optionThree.textContent = "Third option";
-    optionFour.textContent = "Fourth option";
-    quizOptions.appendChild(optionOne);
+    quizBox.textContent = questions[0].questionOne;
+    for (let i = 0; i < questions[0].options.length; i++) {
+        let quizOption = document.createElement("button");
+        quizOption.textContent = questions[0].options[i];
+        quizBox.appendChild(quizOption);
+        quizOption.addEventListener("click", function(event) {
+            if (this.textContent === questions[0].correct) {
+                console.log("correct button clicked")
+                secondQuestion ();
+            }
+            else {
+                console.log("wrong clicked")
+                timeLeft = timeLeft - 10;
+                secondQuestion ();
+            }
+        })
 
+    }
+}
+
+function secondQuestion () {
+    quizBox.textContent = questions[1].questionTwo;
+    for (let i = 0; i < questions[1].options.length; i++) {
+        let quizOption = document.createElement("button");
+        quizOption.textContent = questions[1].options[i];
+        quizBox.appendChild(quizOption);
+        quizOption.addEventListener("click", function(event) {
+            if (this.textContent === questions[1].correct) {
+                console.log("correct button clicked")
+                thirdQuestion ();
+            }
+            else {
+                console.log("wrong clicked")
+                thirdQuestion ();
+                timeLeft = timeLeft - 10;
+            }
+        })
+
+    }
+}
+
+function thirdQuestion () {
+    quizBox.textContent = questions[2].questionThree;
+    for (let i = 0; i < questions[2].options.length; i++) {
+        let quizOption = document.createElement("button");
+        quizOption.textContent = questions[2].options[i];
+        quizBox.appendChild(quizOption);
+        quizOption.addEventListener("click", function(event) {
+            if (this.textContent === questions[2].correct) {
+                console.log("correct button clicked")
+                fourthQuestion ();
+            }
+            else {
+                console.log("wrong clicked")
+                fourthQuestion ();
+                timeLeft = timeLeft - 10;
+            }
+        })
+
+    }
+}
+
+function fourthQuestion () {
+    quizBox.textContent = questions[3].questionFour;
+    for (let i = 0; i < questions[3].options.length; i++) {
+        let quizOption = document.createElement("button");
+        quizOption.textContent = questions[3].options[i];
+        quizBox.appendChild(quizOption);
+        quizOption.addEventListener("click", function(event) {
+            if (this.textContent === questions[3].correct) {
+                console.log("correct button clicked")
+                fifthQuestion ();
+            }
+            else {
+                console.log("wrong clicked")
+                fifthQuestion ();
+                timeLeft = timeLeft - 10;
+            }
+        })
+
+    }
+}
+
+function fifthQuestion () {
+    quizBox.textContent = questions[4].questionFive;
+    for (let i = 0; i < questions[4].options.length; i++) {
+        let quizOption = document.createElement("button");
+        quizOption.textContent = questions[4].options[i];
+        quizBox.appendChild(quizOption);
+        quizOption.addEventListener("click", function(event) {
+            if (this.textContent === questions[4].correct) {
+                console.log("correct button clicked")
+                quizOver ();
+            }
+            else {
+                console.log("wrong clicked");
+                timeLeft = timeLeft - 10;
+                quizOver ();
+            }
+        })
+
+    }
+}
+
+function quizOver () {
+    document.querySelector(".options").remove ();
+    console.log ("The quiz is over");
+    clearInterval(clockTick);
+    timerEl.textContent = "Quiz Over!"    
+    
 }
 
 
-// Hide start button and quiz info and go into first quiz box
 
-// Create an array with questions and possible answers, number question options and answer diff values in each array (??)
-// For loop through array until no more questions, text for Q and text for option list in innerHTML or textContent
-
-// Function for if next button is clicked (if next button) --> iterate through array above, else --> quiz completed
-
-// If correct answer chosen, "Correct!" appears below, else "Incorrect" appears
-// Function for score if wrong vs if right -- to local storage
 
 
 // Intro page with Welcome to quiz and information, start button.
-// Welcome to your JavaScript Fundamentals quiz! You will have 75 seconds total to answer the following () questions. For every wrong
-// Answer you will be penalized by 10 seconds. Good luck!
+
 // Link to view high scores in top left and timer countdown with left in top right (starts with 75 seconds) (setInterval once start is clicked)
 // Once start button is click, move into fist quiz box with questions and answers
 // One questions must be marked with an if statement (if true: add to score, say "correct" at buttom, no time penalty)
