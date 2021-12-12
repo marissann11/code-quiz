@@ -7,6 +7,8 @@ let quizBox = document.querySelector(".options")
 let score = 0
 let highScoresEl = document.querySelector(".high-scores")
 let finalForm = document.querySelector(".score-form")
+let initials = document.querySelector("#initial")
+let submitBtnEl = document.querySelector("#submit-btn")
 
 let questions = [
     {
@@ -163,71 +165,17 @@ function quizOver () {
     console.log ("The quiz is over");
     clearInterval(clockTick);
     timerEl.textContent = "Quiz Over!"
-    saveScore ();
+    if (score > 0) {
+        finalForm.style.display = "block";
+    }
 }
 
 function saveScore () {
-    finalForm.style.display = "block";
-    let allScores = []
-    function loadPrevious() {
-        let savedScores = JSON.parse(localstorage.getItem("highScores"));
-        if (!savedScores) {
-            return false;
-        }
-        for (let i = 0; j < savedScores.length; i++) {
-            allScores.push(savedScores[i])
-        }
-    }
-    loadPrevious ();
-    let initials = document.querySelector("#initial").value;
-    let newScore = {
-        inital: initials,
-        score: score,
-    };
-    allScores.push(newScore);
-    localStorage.setItem("highScores", JSON.stringify(allScores));
+    let highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+    newScores = {initials: initials.value, score: score};
+    highScores.push(newScores);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
-
-
-// function loadScores() {
-//     let previousScores = localStorage.getItem("scores");
-//     if (!previousScores) {
-//       return false;
-//     }
-//     previousScores = JSON.parse(previousScores);
-//     allScores.push(previousScores);
-//     console.log(allScores);
-//   }
-
-// function saveScore () {
-//     finalForm.style.display = "block";
-//     let initials = document.querySelector("#iniital").value;
-//     let previousScores = localStorage.getItem("highScores");
-//     if (!previousScores) {
-//         return false;
-//     }
-//     else {
-//         previousScores = JSONparse(previousScores);
-//     }
-// }
-
-// function saveScore () {
-//     finalForm.style.display = "block"
-//     let initials = document.querySelector("#initial").value;
-//     console.log(initials)
-//     newScore = {initials: initials, score: score};
-//     localStorage.setItem("newScore", JSON.stringify(newScore));
-// }
-
-// function loadScores () {
-//     let  = localStorage.getItem("newScore");
-//     highScoresEl = JSON.parse(highScoresEl);
-//     highScoresEl.push(newScore);
-// }
-    // newScore = JSON.parse(localStorage.getItem("newScore"));
-
-    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEl")) || [];
-    // highScoresEl.push(newScore);
-
+submitBtnEl.addEventListener("click", saveScore)
 
