@@ -48,6 +48,7 @@ startButtonEl.addEventListener("click", function () {
 
         if (timeLeft === 0) {
             quizOver ();
+            finalForm.style.display = "none"
         }
         timeLeft--;
     } 
@@ -166,16 +167,67 @@ function quizOver () {
 }
 
 function saveScore () {
-    finalForm.style.display = "block"
+    finalForm.style.display = "block";
+    let allScores = []
+    function loadPrevious() {
+        let savedScores = JSON.parse(localstorage.getItem("highScores"));
+        if (!savedScores) {
+            return false;
+        }
+        for (let i = 0; j < savedScores.length; i++) {
+            allScores.push(savedScores[i])
+        }
+    }
+    loadPrevious ();
     let initials = document.querySelector("#initial").value;
-    console.log(initials)
-    // newScore = {initials: initials, score: score};
-    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEl")) || []
-    // highScoresEl.push(newScore)
-    // let initials = document.querySelector("#initial").value;
-    // newScore = {initials: initials, score: score}
-    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEL")) || []
-    // highScoresEl.push(newScore)
-    // console.log(highScoresEl)
+    let newScore = {
+        inital: initials,
+        score: score,
+    };
+    allScores.push(newScore);
+    localStorage.setItem("highScores", JSON.stringify(allScores));
 }
+
+
+
+// function loadScores() {
+//     let previousScores = localStorage.getItem("scores");
+//     if (!previousScores) {
+//       return false;
+//     }
+//     previousScores = JSON.parse(previousScores);
+//     allScores.push(previousScores);
+//     console.log(allScores);
+//   }
+
+// function saveScore () {
+//     finalForm.style.display = "block";
+//     let initials = document.querySelector("#iniital").value;
+//     let previousScores = localStorage.getItem("highScores");
+//     if (!previousScores) {
+//         return false;
+//     }
+//     else {
+//         previousScores = JSONparse(previousScores);
+//     }
+// }
+
+// function saveScore () {
+//     finalForm.style.display = "block"
+//     let initials = document.querySelector("#initial").value;
+//     console.log(initials)
+//     newScore = {initials: initials, score: score};
+//     localStorage.setItem("newScore", JSON.stringify(newScore));
+// }
+
+// function loadScores () {
+//     let  = localStorage.getItem("newScore");
+//     highScoresEl = JSON.parse(highScoresEl);
+//     highScoresEl.push(newScore);
+// }
+    // newScore = JSON.parse(localStorage.getItem("newScore"));
+
+    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEl")) || [];
+    // highScoresEl.push(newScore);
+
 

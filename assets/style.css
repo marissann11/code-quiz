@@ -10,9 +10,14 @@ header {
 header a {
     text-decoration: none;
     color:rgb(10, 14, 68);
+    font-size: 25px;
 }
 header a:hover {
-    font-weight: bolder;
+    font-weight:bolder;
+}
+.timer {
+    font-size: 25px;
+    color:rgb(10, 14, 68);
 }
 .main-content {
     margin: auto;
@@ -37,9 +42,11 @@ header a:hover {
     padding: 15px;
     border: 5px solid rgb(10, 14, 68);
     border-radius: 5px;
+    background-color:rgb(10, 14, 68);
+    color:white;
 }
 #start-button:hover {
-    border: 7px solid rgb(10, 14, 68);
+    opacity:0.7;
 }
 .options {
     margin: auto;
@@ -60,7 +67,12 @@ button {
     font-size: 15px;
     border: 1px solid rgb(10, 14, 68);
     border-radius: 5px;
+    background-color:rgb(10, 14, 68);
+    color:white;
 }  
+button:hover {
+    opacity:0.7;
+}
 .score-form {
     margin: auto;
     text-align: center;
