@@ -6,6 +6,7 @@ let clockTick;
 let quizBox = document.querySelector(".options")
 let score = 0
 let highScoresEl = document.querySelector(".high-scores")
+let finalForm = document.querySelector(".score-form")
 
 let questions = [
     {
@@ -34,6 +35,8 @@ let questions = [
         correct: "="
     }
 ]
+
+finalForm.style.display = "none"
 
 // What to do when start quiz button is clicked
 startButtonEl.addEventListener("click", function () {
@@ -159,5 +162,20 @@ function quizOver () {
     console.log ("The quiz is over");
     clearInterval(clockTick);
     timerEl.textContent = "Quiz Over!"
+    saveScore ();
+}
+
+function saveScore () {
+    finalForm.style.display = "block"
+    let initials = document.querySelector("#initial").value;
+    console.log(initials)
+    // newScore = {initials: initials, score: score};
+    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEl")) || []
+    // highScoresEl.push(newScore)
+    // let initials = document.querySelector("#initial").value;
+    // newScore = {initials: initials, score: score}
+    // let highScoresEl = JSON.parse(localStorage.getItem("highScoresEL")) || []
+    // highScoresEl.push(newScore)
+    // console.log(highScoresEl)
 }
 

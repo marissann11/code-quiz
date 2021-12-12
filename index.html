@@ -11,11 +11,11 @@
     <!--Constant throughout -->
     <header>
         <div class="timer"></div>
-        <a href="assets/index2.html" class="high-scores">High Scores</a>
+        <a href="assets/index2.html" class="high-scores">View High Scores</a>
     </header>
     <!--Info Box (intro to quiz) with start button inside-->
     <section class= main-content>
-        <section id="welcome-box">
+        <article id="welcome-box">
             <h1>Welcome to your JavaScript Fundamentals Quiz!</h1>
                 <p>You will have 75 seconds total to answer the following 5 questions.<br/>
                 For every wrong answer you will be penalized by 10 seconds. Good luck!</p>
@@ -23,10 +23,17 @@
             <div>
                 <button id="start-button">Start Quiz</button>
             </div>
-        </section>
+        </article>
 
         <!--Quiz Box!!-->
         <div class="options"></div>
+        <div class="score-form">
+            <form>
+                <label>Please enter your initials:</label>
+                <input type="text" id="initial">
+                <button type="submit">Save my score</button>
+            </form>
+        </div>
         
     </section>
 

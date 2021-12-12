@@ -42,8 +42,9 @@ header a:hover {
     border: 7px solid rgb(10, 14, 68);
 }
 .options {
+    margin: auto;
     text-align: center;
-    padding: 20px;
+    padding: 20px auto;
     line-height: 2;
     width: 100%;
     font-size: 20px;
@@ -60,3 +61,13 @@ button {
     border: 1px solid rgb(10, 14, 68);
     border-radius: 5px;
 }  
+.score-form {
+    margin: auto;
+    text-align: center;
+    padding: 20px auto;
+    line-height: 2;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 5%;
+}
