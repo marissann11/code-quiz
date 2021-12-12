@@ -9,30 +9,27 @@
 </head>
 <body>
     <!--Constant throughout -->
-    <section id="banner">
+    <header>
         <div class="timer"></div>
         <a href="assets/index2.html" class="high-scores">High Scores</a>
-    </section>
+    </header>
     <!--Info Box (intro to quiz) with start button inside-->
-    <section id="welcome-box">
-        <h1>Welcome to your JavaScript Fundamentals Quiz!</h1>
-            <p>You will have 75 seconds total to answer the following () questions<br/>
-            For every wrong answer you will be penalized by 10 seconds. Good luck!</p>
-        <!--Start quiz button-->
-        <div>
-            <button id="start-button">Start Quiz</button>
-        </div>
+    <section class= main-content>
+        <section id="welcome-box">
+            <h1>Welcome to your JavaScript Fundamentals Quiz!</h1>
+                <p>You will have 75 seconds total to answer the following 5 questions.<br/>
+                For every wrong answer you will be penalized by 10 seconds. Good luck!</p>
+            <!--Start quiz button-->
+            <div>
+                <button id="start-button">Start Quiz</button>
+            </div>
+        </section>
+
+        <!--Quiz Box!!-->
+        <div class="options"></div>
+        
     </section>
 
-    <!--Quiz Box!!-->
-    <section class="quiz-container">
-    </section>
-    <div class="options"></div>
-
-
-    <!--Results and Score Box-->
-
-
-<script src="assets/script.js"></script>    
+    <script src="assets/script.js"></script>    
 </body>
 </html>

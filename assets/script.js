@@ -62,7 +62,6 @@ function firstQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[0].correct) {
                 console.log("correct button clicked")
-                score = score + 5
                 secondQuestion ();
             }
             else {
@@ -71,7 +70,6 @@ function firstQuestion () {
                 secondQuestion ();
             }
         })
-
     }
 }
 
@@ -84,7 +82,6 @@ function secondQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[1].correct) {
                 console.log("correct button clicked")
-                score = score + 5
                 thirdQuestion ();
             }
             else {
@@ -93,7 +90,6 @@ function secondQuestion () {
                 timeLeft = timeLeft - 10;
             }
         })
-
     }
 }
 
@@ -106,7 +102,6 @@ function thirdQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[2].correct) {
                 console.log("correct button clicked")
-                score = score + 5
                 fourthQuestion ();
             }
             else {
@@ -115,7 +110,6 @@ function thirdQuestion () {
                 timeLeft = timeLeft - 10;
             }
         })
-
     }
 }
 
@@ -128,7 +122,6 @@ function fourthQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[3].correct) {
                 console.log("correct button clicked")
-                score = score + 5
                 fifthQuestion ();               
             }
             else {
@@ -137,7 +130,6 @@ function fourthQuestion () {
                 timeLeft = timeLeft - 10;
             }
         })
-
     }
 }
 
@@ -150,7 +142,6 @@ function fifthQuestion () {
         quizOption.addEventListener("click", function(event) {
             if (this.textContent === questions[4].correct) {
                 console.log("correct button clicked")
-                score = score + 5
                 quizOver ();
             }
             else {
@@ -159,26 +150,14 @@ function fifthQuestion () {
                 quizOver ();
             }
         })
-
     }
 }
 
 function quizOver () {
+    score = timeLeft
     quizBox.textContent = "Your final score is: " + score;
     console.log ("The quiz is over");
     clearInterval(clockTick);
-    timerEl.textContent = "Quiz Over!"    
-    
+    timerEl.textContent = "Quiz Over!"
 }
 
-
-// Link to view high scores in top left and timer countdown with left in top right (starts with 75 seconds) (setInterval once start is clicked)
-
-// One questions must be marked with an if statement (if true: add to score, say "correct" at buttom, no time penalty)
-// Else rest of the options, no add to score, 10 second penalty
-// Make sure no other questions can be selected after answer is already selected and graded
-// Automatically go to next quiz box with time delay function after correct/incorrect has been displayed and score/time is updated
-// Either time runs out or questions are all answered- quiz is over 
-// Once quiz is done- message saying all done and score given. Box for user to input initials to save high score
-// Redirected to page with highscores displayed, kept in localstorage and retrieved and displayed on page
-// Option to go back to beginning of site with quiz info and start button displayed
