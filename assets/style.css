@@ -83,13 +83,15 @@ button:hover {
     font-weight: bolder;
     margin-top: 5%;
 }
-.scores-display {
+#score-display {
     margin: auto;
     text-align: center;
     padding: 20px auto;
     line-height: 2;
-    width: 100%;
+    width: 40%;
     font-size: 20px;
     font-weight: bolder;
     margin-top: 5%;
+    border: 5px solid rgb(10, 14, 68);
+    border-radius: 5px;
 }

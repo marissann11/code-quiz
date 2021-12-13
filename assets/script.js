@@ -9,7 +9,9 @@ let highScoresEl = document.querySelector(".high-scores");
 let finalForm = document.querySelector(".score-form");
 let initials = document.querySelector("#initial");
 let submitBtnEl = document.querySelector("#submit-btn");
-let scoreEl = document.querySelector(".scores-display")
+let savedScores = [];
+
+
 
 // Create array of questions so that when quiz starts they can be looped through. Make separate value for each correct answer
 let questions = [
@@ -193,9 +195,19 @@ function saveScore () {
 
 submitBtnEl.addEventListener("click", saveScore)
 
-// This function is only called when user clicks on link to second html file, "view high scores" page
-function scorePage () {
-    let highScores = JSON.stringify(localStorage.getItem("highScores"));
-    console.log(highScores);
-    scoreEl.textContent = highScores;
-}
+// This function is not called until the user goes to the high scores page, where it is called immediately
+// Credit to Chris Backes for scorePage function
+function scorePage() {
+    savedScores = JSON.parse(localStorage.getItem("highScores"));
+    for (let i = 0; i < savedScores.length; i++) {
+      let tableEl = document.querySelector("#score-display");
+      let tableRowEl = document.createElement("tr");
+      let tableHeadOneEl = document.createElement("th");
+      let tableHeadTwoEl = document.createElement("th");
+      tableEl.appendChild(tableRowEl);
+      tableHeadOneEl.textContent = savedScores[i].initials;
+      tableRowEl.appendChild(tableHeadOneEl);
+      tableHeadTwoEl.textContent = savedScores[i].score;
+      tableRowEl.appendChild(tableHeadTwoEl);
+    }
+  }
