@@ -83,3 +83,13 @@ button:hover {
     font-weight: bolder;
     margin-top: 5%;
 }
+.scores-display {
+    margin: auto;
+    text-align: center;
+    padding: 20px auto;
+    line-height: 2;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 5%;
+}
