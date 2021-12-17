@@ -30,7 +30,7 @@ THEN I can save my initials and score
 
 # Website
 
-https://marissann11.github.io/code-quiz/
+https://marissann11.github.io/code-quiz-week4-challenge/
 
 # Screenshot
 
